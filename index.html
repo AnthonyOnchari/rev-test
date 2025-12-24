@@ -5,333 +5,565 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rev. ICN Olang Ministries</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary: #1a5a7a;
+      --secondary: #d4a76a;
+      --accent: #2c8c6d;
+      --light: #f8f9fa;
+      --dark: #1a1a2e;
+      --gray: #6c757d;
+      --light-gray: #e9ecef;
+      --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      --transition: all 0.3s ease;
+      --border-radius: 8px;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      line-height: 1.6;
-      background: #f9f9f9;
-      color: #333;
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.7;
+      color: var(--dark);
+      background-color: var(--light);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Merriweather', serif;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    h2:after {
+      content: '';
+      position: absolute;
+      width: 60%;
+      height: 4px;
+      background: var(--secondary);
+      bottom: -10px;
+      left: 20%;
+      border-radius: 2px;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      color: var(--gray);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    section {
+      padding: 5rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 0.9rem 2.2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 1rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-secondary {
+      background: var(--secondary);
+      color: var(--dark);
     }
 
     /* Header */
     header {
-      background: #2c2c54;
-      color: #fff;
-      padding: 15px;
-      text-align: center;
-      position: sticky;
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+      position: fixed;
       top: 0;
+      width: 100%;
       z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 1rem 0;
+      transition: var(--transition);
     }
 
-    header h1 {
-      font-size: 1.8rem;
-      margin-bottom: 10px;
+    header.scrolled {
+      padding: 0.7rem 0;
     }
 
-    header nav {
-      margin-top: 10px;
+    .header-container {
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
     }
 
-    header nav a {
-      color: #fff;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      padding: 5px 0;
-      border-bottom: 2px solid transparent;
+    .logo {
+      font-family: 'Merriweather', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
     }
 
-    header nav a:hover {
-      text-decoration: none;
-      color: #ffa502;
-      border-bottom: 2px solid #ffa502;
+    .logo span {
+      color: var(--secondary);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin-left: 2rem;
+    }
+
+    .nav-links a {
+      font-weight: 600;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    .nav-links a:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--secondary);
+      bottom: 0;
+      left: 0;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover:after,
+    .nav-links a.active:after {
+      width: 100%;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--primary);
+      cursor: pointer;
     }
 
     /* Hero */
     .hero {
-      background: linear-gradient(rgba(44, 44, 84, 0.85), rgba(64, 64, 122, 0.9)), url('https://images.unsplash.com/photo-1509023464722-18d996393ca8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(rgba(26, 90, 122, 0.85), rgba(26, 26, 46, 0.9)), url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
       background-size: cover;
       background-position: center;
+      background-attachment: fixed;
       color: white;
-      padding: 80px 20px;
       text-align: center;
-      min-height: 70vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      padding-top: 5rem;
     }
 
-    .hero h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin-bottom: 30px;
-    }
-
-    .hero button {
-      margin-top: 20px;
-      padding: 12px 30px;
-      border: none;
-      background: #ffa502;
-      color: #000;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 1.1rem;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .hero button:hover {
-      background: #ff7f50;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Sections */
-    section {
-      padding: 60px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    section h2 {
-      margin-bottom: 25px;
-      color: #2c2c54;
-      font-size: 2rem;
-      text-align: center;
-      position: relative;
-      padding-bottom: 10px;
-    }
-
-    section h2::after {
-      content: '';
-      position: absolute;
-      width: 80px;
-      height: 3px;
-      background: #ffa502;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    /* About */
-    #about {
-      background: #fff;
-      border-radius: 10px;
-      margin-top: -30px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    }
-
-    #about p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      text-align: center;
+    .hero-content {
       max-width: 800px;
       margin: 0 auto;
     }
 
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 2.5rem;
+    }
+
+    /* About */
+    .about {
+      background: white;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+    }
+
+    .about-image {
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .about-image:hover img {
+      transform: scale(1.03);
+    }
+
     /* Sermons */
-    #sermons {
-      background: #f4f4f4;
-    }
-
-    #sermons p {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 1.1rem;
-    }
-
-    .sermon-box {
-      background: #fff;
-      padding: 30px;
-      border-left: 5px solid #2c2c54;
-      border-radius: 5px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-      text-align: center;
-      font-style: italic;
-      color: #666;
+    .sermons {
+      background: var(--light-gray);
     }
 
     .sermon-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 25px;
-      margin-top: 30px;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
     }
 
-    .sermon-item {
+    .sermon-card {
       background: white;
-      border-radius: 8px;
+      border-radius: var(--border-radius);
       overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s ease;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
     }
 
-    .sermon-item:hover {
-      transform: translateY(-5px);
+    .sermon-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
     }
 
-    .sermon-item img {
+    .sermon-image {
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .sermon-image img {
       width: 100%;
-      height: 180px;
+      height: 100%;
       object-fit: cover;
+      transition: transform 0.5s ease;
     }
 
-    .sermon-item h3 {
-      padding: 15px;
-      color: #2c2c54;
+    .sermon-card:hover .sermon-image img {
+      transform: scale(1.05);
     }
 
-    .sermon-item p {
-      padding: 0 15px 15px;
-      color: #666;
-      font-size: 0.95rem;
+    .sermon-content {
+      padding: 1.5rem;
     }
 
-    /* Prayer Form */
-    #prayer {
-      background: #fff;
+    .sermon-content h3 {
+      color: var(--primary);
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
     }
 
-    #prayerForm {
-      max-width: 700px;
-      margin: 40px auto 0;
-      background: #f9f9f9;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    }
-
-    form input,
-    form textarea {
-      width: 100%;
-      padding: 15px;
-      margin-bottom: 20px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
+    .sermon-content p {
       font-size: 1rem;
-      transition: border 0.3s;
+      margin-bottom: 1.2rem;
     }
 
-    form input:focus,
-    form textarea:focus {
-      border-color: #2c2c54;
-      outline: none;
+    .sermon-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      color: var(--gray);
     }
 
-    form button {
-      background: #2c2c54;
-      color: #fff;
-      border: none;
-      padding: 15px 30px;
-      cursor: pointer;
-      font-size: 1.1rem;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-      width: 100%;
-      font-weight: bold;
-    }
-
-    form button:hover {
-      background: #40407a;
-    }
-
-    #responseMessage {
+    .sermon-box {
+      background: white;
+      padding: 2.5rem;
       text-align: center;
-      margin-top: 20px;
-      padding: 15px;
-      background: #d4edda;
-      color: #155724;
-      border-radius: 5px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      border-top: 5px solid var(--secondary);
+    }
+
+    .sermon-box i {
+      font-size: 2rem;
+      color: var(--secondary);
+      margin-bottom: 1rem;
+    }
+
+    /* Prayer */
+    .prayer {
+      background: white;
+    }
+
+    .prayer-form-container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: var(--light);
+      padding: 2.5rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: var(--border-radius);
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(26, 90, 122, 0.1);
+    }
+
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .response-message {
+      padding: 1rem;
+      border-radius: var(--border-radius);
+      text-align: center;
+      margin-top: 1.5rem;
       display: none;
     }
 
+    .response-message.success {
+      background: #d4edda;
+      color: #155724;
+      display: block;
+    }
+
     /* Contact */
-    #contact {
-      background: #f4f4f4;
+    .contact {
+      background: var(--light-gray);
+    }
+
+    .contact-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .contact-card {
+      background: white;
+      padding: 2rem;
+      border-radius: var(--border-radius);
       text-align: center;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
     }
 
-    #contact p {
-      margin: 15px 0;
-      font-size: 1.1rem;
+    .contact-card:hover {
+      transform: translateY(-5px);
     }
 
-    .contact-icons {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-top: 30px;
+    .contact-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1.2rem;
     }
 
-    .contact-icons div {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .contact-icons i {
-      font-size: 2rem;
-      color: #2c2c54;
-      margin-bottom: 10px;
+    .contact-card h3 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
     }
 
     /* Footer */
     footer {
-      background: #2c2c54;
-      color: #fff;
-      text-align: center;
-      padding: 25px;
-      margin-top: 40px;
+      background: var(--dark);
+      color: white;
+      padding: 4rem 1.5rem 2rem;
     }
 
-    footer p {
-      margin-bottom: 10px;
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-logo {
+      font-family: 'Merriweather', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .footer-logo span {
+      color: var(--secondary);
+    }
+
+    .footer-about p {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .footer-links h3,
+    .footer-newsletter h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.8rem;
+    }
+
+    .footer-links h3:after,
+    .footer-newsletter h3:after {
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 3px;
+      background: var(--secondary);
+      bottom: 0;
+      left: 0;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .footer-links a:hover {
+      color: var(--secondary);
+      padding-left: 5px;
+    }
+
+    .footer-newsletter p {
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 1.5rem;
+    }
+
+    .newsletter-form {
+      display: flex;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 0.9rem;
+      border: none;
+      border-radius: 50px 0 0 50px;
+    }
+
+    .newsletter-form button {
+      background: var(--secondary);
+      color: var(--dark);
+      border: none;
+      padding: 0 1.5rem;
+      border-radius: 0 50px 50px 0;
+      cursor: pointer;
+      font-weight: 600;
     }
 
     .social-icons {
-      margin-top: 15px;
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
     }
 
     .social-icons a {
-      color: #fff;
-      margin: 0 10px;
-      font-size: 1.2rem;
-      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      transition: var(--transition);
     }
 
     .social-icons a:hover {
-      color: #ffa502;
+      background: var(--secondary);
+      color: var(--dark);
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.6);
     }
 
     /* Back to top button */
     .back-to-top {
       position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: #2c2c54;
-      color: white;
+      bottom: 2rem;
+      right: 2rem;
       width: 50px;
       height: 50px;
+      background: var(--primary);
+      color: white;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -339,40 +571,114 @@
       cursor: pointer;
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
       opacity: 0;
-      transition: all 0.3s ease;
+      visibility: hidden;
+      transition: var(--transition);
       z-index: 999;
     }
 
     .back-to-top.show {
       opacity: 1;
+      visibility: visible;
     }
 
     .back-to-top:hover {
-      background: #40407a;
+      background: var(--accent);
+      transform: translateY(-5px);
     }
 
     /* Responsive Design */
-    @media (max-width: 768px) {
-      header nav a {
-        margin: 0 10px;
-        font-size: 0.9rem;
+    @media (max-width: 992px) {
+      h2 {
+        font-size: 2.2rem;
       }
+      
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+    }
 
-      .hero h2 {
+    @media (max-width: 768px) {
+      section {
+        padding: 4rem 1.5rem;
+      }
+      
+      h2 {
         font-size: 2rem;
       }
-
-      section {
-        padding: 40px 20px;
+      
+      .hero h1 {
+        font-size: 2.3rem;
       }
-
-      .contact-icons {
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
         flex-direction: column;
-        gap: 20px;
+        align-items: center;
+        padding: 2rem 0;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
       }
+      
+      .nav-links.show {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      .nav-links li {
+        margin: 0 0 1.5rem 0;
+      }
+      
+      .prayer-form-container {
+        padding: 1.5rem;
+      }
+    }
 
+    @media (max-width: 576px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .btn {
+        padding: 0.8rem 1.8rem;
+      }
+      
       .sermon-container {
         grid-template-columns: 1fr;
+      }
+      
+      .newsletter-form {
+        flex-direction: column;
+      }
+      
+      .newsletter-form input {
+        border-radius: 50px;
+        margin-bottom: 0.8rem;
+      }
+      
+      .newsletter-form button {
+        border-radius: 50px;
+        padding: 0.8rem;
       }
     }
   </style>
@@ -380,108 +686,222 @@
 <body>
 
   <!-- Header -->
-  <header>
-    <h1>Rev. ICN Olang Ministries</h1>
-    <nav>
-      <a href="#home"><i class="fas fa-home"></i> Home</a>
-      <a href="#about"><i class="fas fa-user"></i> About</a>
-      <a href="#sermons"><i class="fas fa-bible"></i> Sermons</a>
-      <a href="#prayer"><i class="fas fa-pray"></i> Prayer</a>
-      <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
-    </nav>
+  <header id="header">
+    <div class="container header-container">
+      <a href="#" class="logo">Rev. <span>ICN Olang</span> Ministries</a>
+      
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#sermons">Sermons</a></li>
+        <li><a href="#prayer">Prayer</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
   </header>
 
   <!-- Hero Section -->
   <section id="home" class="hero">
-    <h2>Raising Lives Through the Word of God</h2>
-    <p>Welcome to the official ministry website of Rev. ICN Olang. A place for spiritual growth, healing, and transformation through the power of the Gospel.</p>
-    <button onclick="scrollToPrayer()">Request Prayer</button>
+    <div class="container hero-content">
+      <h1>Raising Lives Through the Word of God</h1>
+      <p>Welcome to the official ministry website of Rev. ICN Olang. A place for spiritual growth, healing, and transformation through the power of the Gospel.</p>
+      <a href="#prayer" class="btn btn-secondary">Request Prayer</a>
+    </div>
   </section>
 
   <!-- About Section -->
-  <section id="about">
-    <h2>About Rev. ICN Olang</h2>
-    <p>
-      Rev. ICN Olang is a devoted servant of God called to preach, teach, and restore lives through the Gospel of Jesus Christ. 
-      With over 15 years of ministry experience, Rev. Olang has impacted countless individuals across nations through powerful teachings, 
-      healing services, and compassionate outreach. His ministry focuses on the transformative power of God's Word to bring hope, 
-      healing, and purpose to every life.
-    </p>
+  <section id="about" class="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>About Rev. ICN Olang</h2>
+      </div>
+      
+      <div class="about-content">
+        <div class="about-text">
+          <p>Rev. ICN Olang is a devoted servant of God called to preach, teach, and restore lives through the Gospel of Jesus Christ.</p>
+          <p>With over 15 years of ministry experience, Rev. Olang has impacted countless individuals across nations through powerful teachings, healing services, and compassionate outreach.</p>
+          <p>His ministry focuses on the transformative power of God's Word to bring hope, healing, and purpose to every life.</p>
+        </div>
+        
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Rev. ICN Olang">
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Sermons Section -->
-  <section id="sermons">
-    <h2>Sermons & Teachings</h2>
-    <p>Watch and listen to powerful messages that will transform your life and strengthen your faith.</p>
-    
-    <div class="sermon-container">
-      <div class="sermon-item">
-        <img src="https://images.unsplash.com/photo-1509023464722-18d996393ca8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Sermon Image">
-        <h3>The Power of Faith</h3>
-        <p>Discover how to activate your faith in challenging times and see God's miracles in your life.</p>
+  <section id="sermons" class="sermons">
+    <div class="container">
+      <div class="section-title">
+        <h2>Sermons & Teachings</h2>
+        <p>Watch and listen to powerful messages that will transform your life and strengthen your faith.</p>
       </div>
       
-      <div class="sermon-item">
-        <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Sermon Image">
-        <h3>Overcoming Fear</h3>
-        <p>Learn biblical principles to conquer fear and walk in God's perfect love and confidence.</p>
+      <div class="sermon-container">
+        <div class="sermon-card">
+          <div class="sermon-image">
+            <img src="https://images.unsplash.com/photo-1509023464722-18d996393ca8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="The Power of Faith">
+          </div>
+          <div class="sermon-content">
+            <h3>The Power of Faith</h3>
+            <p>Discover how to activate your faith in challenging times and see God's miracles in your life.</p>
+            <div class="sermon-meta">
+              <span><i class="far fa-clock"></i> 45 min</span>
+              <span><i class="far fa-calendar"></i> Apr 15, 2025</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="sermon-card">
+          <div class="sermon-image">
+            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Overcoming Fear">
+          </div>
+          <div class="sermon-content">
+            <h3>Overcoming Fear</h3>
+            <p>Learn biblical principles to conquer fear and walk in God's perfect love and confidence.</p>
+            <div class="sermon-meta">
+              <span><i class="far fa-clock"></i> 38 min</span>
+              <span><i class="far fa-calendar"></i> Mar 28, 2025</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="sermon-card">
+          <div class="sermon-image">
+            <img src="https://images.unsplash.com/photo-1518834103328-93d45986dce1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Living in Purpose">
+          </div>
+          <div class="sermon-content">
+            <h3>Living in Purpose</h3>
+            <p>Find and fulfill God's unique purpose for your life through this empowering message.</p>
+            <div class="sermon-meta">
+              <span><i class="far fa-clock"></i> 52 min</span>
+              <span><i class="far fa-calendar"></i> Mar 10, 2025</span>
+            </div>
+          </div>
+        </div>
       </div>
       
-      <div class="sermon-item">
-        <img src="https://images.unsplash.com/photo-1518834103328-93d45986dce1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Sermon Image">
-        <h3>Living in Purpose</h3>
-        <p>Find and fulfill God's unique purpose for your life through this empowering message.</p>
+      <div class="sermon-box">
+        <i class="fas fa-video"></i>
+        <h3>More Sermons Coming Soon</h3>
+        <p>New video teachings and sermons are added regularly. Subscribe to our newsletter to stay updated.</p>
       </div>
-    </div>
-    
-    <div class="sermon-box">
-      <p><i class="fas fa-video"></i> More sermons and video teachings coming soon...</p>
     </div>
   </section>
 
   <!-- Prayer Section -->
-  <section id="prayer">
-    <h2>Prayer Requests</h2>
-    <p>We believe in the power of prayer. Share your request and our prayer team will intercede for you.</p>
-    
-    <form id="prayerForm">
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email (optional)" />
-      <textarea placeholder="Your Prayer Request" rows="5" required></textarea>
-      <button type="submit"><i class="fas fa-paper-plane"></i> Submit Prayer Request</button>
-    </form>
-    <p id="responseMessage"></p>
+  <section id="prayer" class="prayer">
+    <div class="container">
+      <div class="section-title">
+        <h2>Prayer Requests</h2>
+        <p>We believe in the power of prayer. Share your request and our prayer team will intercede for you.</p>
+      </div>
+      
+      <div class="prayer-form-container">
+        <form id="prayerForm">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Your Email (optional)</label>
+            <input type="email" id="email" class="form-control" placeholder="Enter your email">
+          </div>
+          
+          <div class="form-group">
+            <label for="request">Your Prayer Request</label>
+            <textarea id="request" class="form-control" placeholder="Please share your prayer request here..." rows="5" required></textarea>
+          </div>
+          
+          <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Submit Prayer Request</button>
+        </form>
+        
+        <div id="responseMessage" class="response-message"></div>
+      </div>
+    </div>
   </section>
 
   <!-- Contact Section -->
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p>We'd love to hear from you. Reach out to us for ministry inquiries, counseling, or partnership.</p>
-    
-    <div class="contact-icons">
-      <div>
-        <i class="fas fa-envelope"></i>
-        <p>Email: info@icnolang.org</p>
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contact Us</h2>
+        <p>We'd love to hear from you. Reach out to us for ministry inquiries, counseling, or partnership.</p>
       </div>
-      <div>
-        <i class="fas fa-phone"></i>
-        <p>Phone: +254 712 345 678</p>
-      </div>
-      <div>
-        <i class="fas fa-map-marker-alt"></i>
-        <p>Nairobi, Kenya</p>
+      
+      <div class="contact-container">
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <h3>Email</h3>
+          <p>info@icnolang.org</p>
+        </div>
+        
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <h3>Phone</h3>
+          <p>+254 712 345 678</p>
+        </div>
+        
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <h3>Location</h3>
+          <p>Nairobi, Kenya</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Rev. ICN Olang Ministries. All Rights Reserved.</p>
-    <div class="social-icons">
-      <a href="#"><i class="fab fa-facebook"></i></a>
-      <a href="#"><i class="fab fa-youtube"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-tiktok"></i></a>
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-about">
+          <div class="footer-logo">Rev. <span>ICN Olang</span></div>
+          <p>Raising lives through the Word of God. A ministry dedicated to spiritual growth, healing, and transformation.</p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#sermons">Sermons</a></li>
+            <li><a href="#prayer">Prayer Request</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-newsletter">
+          <h3>Stay Connected</h3>
+          <p>Subscribe to our newsletter for updates on sermons, events, and ministry news.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email address">
+            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Rev. ICN Olang Ministries. All Rights Reserved.</p>
+      </div>
     </div>
   </footer>
 
@@ -491,65 +911,99 @@
   </div>
 
   <script>
-    // Smooth scroll to prayer section
-    function scrollToPrayer() {
-      document.getElementById("prayer").scrollIntoView({ behavior: "smooth" });
-    }
-
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+      mobileMenuBtn.innerHTML = navLinks.classList.contains('show') 
+        ? '<i class="fas fa-times"></i>' 
+        : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('show');
+        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+    
+    // Header scroll effect
+    const header = document.getElementById('header');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+    
     // Handle prayer form submission
-    document.getElementById("prayerForm").addEventListener("submit", function (e) {
+    document.getElementById('prayerForm').addEventListener('submit', function (e) {
       e.preventDefault();
-      const responseMessage = document.getElementById("responseMessage");
-      responseMessage.innerText = "Thank you. Your prayer request has been received. We are praying with you.";
-      responseMessage.style.display = "block";
-      responseMessage.style.backgroundColor = "#d4edda";
-      responseMessage.style.color = "#155724";
+      
+      const responseMessage = document.getElementById('responseMessage');
+      responseMessage.innerHTML = `
+        <i class="fas fa-check-circle"></i> 
+        <h3>Thank You!</h3>
+        <p>Your prayer request has been received. Our prayer team will intercede for you.</p>
+        <p><small>You will receive a confirmation email shortly.</small></p>
+      `;
+      responseMessage.classList.add('success');
       
       // Reset form
       this.reset();
       
-      // Hide message after 10 seconds
+      // Scroll to response message
+      responseMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      
+      // Reset message after 8 seconds
       setTimeout(() => {
-        responseMessage.style.display = "none";
-      }, 10000);
+        responseMessage.classList.remove('success');
+      }, 8000);
     });
-
-    // Back to top button functionality
-    const backToTopButton = document.getElementById("backToTop");
     
-    window.addEventListener("scroll", () => {
+    // Back to top button
+    const backToTopButton = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
       if (window.pageYOffset > 300) {
-        backToTopButton.classList.add("show");
+        backToTopButton.classList.add('show');
       } else {
-        backToTopButton.classList.remove("show");
+        backToTopButton.classList.remove('show');
       }
     });
     
-    backToTopButton.addEventListener("click", () => {
+    backToTopButton.addEventListener('click', () => {
       window.scrollTo({
         top: 0,
-        behavior: "smooth"
+        behavior: 'smooth'
       });
     });
-
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('nav a').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
+    
+    // Active navigation link highlighting
+    const sections = document.querySelectorAll('section');
+    const navItems = document.querySelectorAll('.nav-links a');
+    
+    window.addEventListener('scroll', () => {
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
         
-        const targetId = this.getAttribute('href');
-        if(targetId === '#home') {
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-          });
-        } else {
-          const targetSection = document.querySelector(targetId);
-          if(targetSection) {
-            targetSection.scrollIntoView({
-              behavior: 'smooth'
-            });
-          }
+        if (pageYOffset >= (sectionTop - 200)) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href') === `#${current}`) {
+          item.classList.add('active');
         }
       });
     });
