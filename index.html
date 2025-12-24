@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rev. ICN Olang Ministries</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      line-height: 1.6;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    /* Header */
+    header {
+      background: #2c2c54;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    header nav {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    header nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 5px 0;
+      border-bottom: 2px solid transparent;
+    }
+
+    header nav a:hover {
+      text-decoration: none;
+      color: #ffa502;
+      border-bottom: 2px solid #ffa502;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(rgba(44, 44, 84, 0.85), rgba(64, 64, 122, 0.9)), url('https://images.unsplash.com/photo-1509023464722-18d996393ca8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 80px 20px;
+      text-align: center;
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin-bottom: 30px;
+    }
+
+    .hero button {
+      margin-top: 20px;
+      padding: 12px 30px;
+      border: none;
+      background: #ffa502;
+      color: #000;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero button:hover {
+      background: #ff7f50;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Sections */
+    section {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    section h2 {
+      margin-bottom: 25px;
+      color: #2c2c54;
+      font-size: 2rem;
+      text-align: center;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    section h2::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 3px;
+      background: #ffa502;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* About */
+    #about {
+      background: #fff;
+      border-radius: 10px;
+      margin-top: -30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    #about p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Sermons */
+    #sermons {
+      background: #f4f4f4;
+    }
+
+    #sermons p {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 1.1rem;
+    }
+
+    .sermon-box {
+      background: #fff;
+      padding: 30px;
+      border-left: 5px solid #2c2c54;
+      border-radius: 5px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      font-style: italic;
+      color: #666;
+    }
+
+    .sermon-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .sermon-item {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .sermon-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .sermon-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .sermon-item h3 {
+      padding: 15px;
+      color: #2c2c54;
+    }
+
+    .sermon-item p {
+      padding: 0 15px 15px;
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    /* Prayer Form */
+    #prayer {
+      background: #fff;
+    }
+
+    #prayerForm {
+      max-width: 700px;
+      margin: 40px auto 0;
+      background: #f9f9f9;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: border 0.3s;
+    }
+
+    form input:focus,
+    form textarea:focus {
+      border-color: #2c2c54;
+      outline: none;
+    }
+
+    form button {
+      background: #2c2c54;
+      color: #fff;
+      border: none;
+      padding: 15px 30px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      width: 100%;
+      font-weight: bold;
+    }
+
+    form button:hover {
+      background: #40407a;
+    }
+
+    #responseMessage {
+      text-align: center;
+      margin-top: 20px;
+      padding: 15px;
+      background: #d4edda;
+      color: #155724;
+      border-radius: 5px;
+      display: none;
+    }
+
+    /* Contact */
+    #contact {
+      background: #f4f4f4;
+      text-align: center;
+    }
+
+    #contact p {
+      margin: 15px 0;
+      font-size: 1.1rem;
+    }
+
+    .contact-icons {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .contact-icons div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contact-icons i {
+      font-size: 2rem;
+      color: #2c2c54;
+      margin-bottom: 10px;
+    }
+
+    /* Footer */
+    footer {
+      background: #2c2c54;
+      color: #fff;
+      text-align: center;
+      padding: 25px;
+      margin-top: 40px;
+    }
+
+    footer p {
+      margin-bottom: 10px;
+    }
+
+    .social-icons {
+      margin-top: 15px;
+    }
+
+    .social-icons a {
+      color: #fff;
+      margin: 0 10px;
+      font-size: 1.2rem;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #ffa502;
+    }
+
+    /* Back to top button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #2c2c54;
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 999;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+    }
+
+    .back-to-top:hover {
+      background: #40407a;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header nav a {
+        margin: 0 10px;
+        font-size: 0.9rem;
+      }
+
+      .hero h2 {
+        font-size: 2rem;
+      }
+
+      section {
+        padding: 40px 20px;
+      }
+
+      .contact-icons {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .sermon-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Rev. ICN Olang Ministries</h1>
+    <nav>
+      <a href="#home"><i class="fas fa-home"></i> Home</a>
+      <a href="#about"><i class="fas fa-user"></i> About</a>
+      <a href="#sermons"><i class="fas fa-bible"></i> Sermons</a>
+      <a href="#prayer"><i class="fas fa-pray"></i> Prayer</a>
+      <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <h2>Raising Lives Through the Word of God</h2>
+    <p>Welcome to the official ministry website of Rev. ICN Olang. A place for spiritual growth, healing, and transformation through the power of the Gospel.</p>
+    <button onclick="scrollToPrayer()">Request Prayer</button>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Rev. ICN Olang</h2>
+    <p>
+      Rev. ICN Olang is a devoted servant of God called to preach, teach, and restore lives through the Gospel of Jesus Christ. 
+      With over 15 years of ministry experience, Rev. Olang has impacted countless individuals across nations through powerful teachings, 
+      healing services, and compassionate outreach. His ministry focuses on the transformative power of God's Word to bring hope, 
+      healing, and purpose to every life.
+    </p>
+  </section>
+
+  <!-- Sermons Section -->
+  <section id="sermons">
+    <h2>Sermons & Teachings</h2>
+    <p>Watch and listen to powerful messages that will transform your life and strengthen your faith.</p>
+    
+    <div class="sermon-container">
+      <div class="sermon-item">
+        <img src="https://images.unsplash.com/photo-1509023464722-18d996393ca8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Sermon Image">
+        <h3>The Power of Faith</h3>
+        <p>Discover how to activate your faith in challenging times and see God's miracles in your life.</p>
+      </div>
+      
+      <div class="sermon-item">
+        <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Sermon Image">
+        <h3>Overcoming Fear</h3>
+        <p>Learn biblical principles to conquer fear and walk in God's perfect love and confidence.</p>
+      </div>
+      
+      <div class="sermon-item">
+        <img src="https://images.unsplash.com/photo-1518834103328-93d45986dce1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Sermon Image">
+        <h3>Living in Purpose</h3>
+        <p>Find and fulfill God's unique purpose for your life through this empowering message.</p>
+      </div>
+    </div>
+    
+    <div class="sermon-box">
+      <p><i class="fas fa-video"></i> More sermons and video teachings coming soon...</p>
+    </div>
+  </section>
+
+  <!-- Prayer Section -->
+  <section id="prayer">
+    <h2>Prayer Requests</h2>
+    <p>We believe in the power of prayer. Share your request and our prayer team will intercede for you.</p>
+    
+    <form id="prayerForm">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email (optional)" />
+      <textarea placeholder="Your Prayer Request" rows="5" required></textarea>
+      <button type="submit"><i class="fas fa-paper-plane"></i> Submit Prayer Request</button>
+    </form>
+    <p id="responseMessage"></p>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>We'd love to hear from you. Reach out to us for ministry inquiries, counseling, or partnership.</p>
+    
+    <div class="contact-icons">
+      <div>
+        <i class="fas fa-envelope"></i>
+        <p>Email: info@icnolang.org</p>
+      </div>
+      <div>
+        <i class="fas fa-phone"></i>
+        <p>Phone: +254 712 345 678</p>
+      </div>
+      <div>
+        <i class="fas fa-map-marker-alt"></i>
+        <p>Nairobi, Kenya</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Rev. ICN Olang Ministries. All Rights Reserved.</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-tiktok"></i></a>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <script>
+    // Smooth scroll to prayer section
+    function scrollToPrayer() {
+      document.getElementById("prayer").scrollIntoView({ behavior: "smooth" });
+    }
+
+    // Handle prayer form submission
+    document.getElementById("prayerForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const responseMessage = document.getElementById("responseMessage");
+      responseMessage.innerText = "Thank you. Your prayer request has been received. We are praying with you.";
+      responseMessage.style.display = "block";
+      responseMessage.style.backgroundColor = "#d4edda";
+      responseMessage.style.color = "#155724";
+      
+      // Reset form
+      this.reset();
+      
+      // Hide message after 10 seconds
+      setTimeout(() => {
+        responseMessage.style.display = "none";
+      }, 10000);
+    });
+
+    // Back to top button functionality
+    const backToTopButton = document.getElementById("backToTop");
+    
+    window.addEventListener("scroll", () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.add("show");
+      } else {
+        backToTopButton.classList.remove("show");
+      }
+    });
+    
+    backToTopButton.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if(targetId === '#home') {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        } else {
+          const targetSection = document.querySelector(targetId);
+          if(targetSection) {
+            targetSection.scrollIntoView({
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
