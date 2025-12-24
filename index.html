@@ -3,23 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rev. ICN Olang Ministries</title>
+  <title>Active Word Apostolic Centre</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700;800&family=Source+Serif+Pro:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #1a5a7a;
-      --secondary: #d4a76a;
-      --accent: #2c8c6d;
-      --light: #f8f9fa;
-      --dark: #1a1a2e;
+      --primary: #1a237e;
+      --secondary: #d4af37;
+      --accent: #004d40;
+      --light: #f5f5f7;
+      --dark: #0d1b2a;
       --gray: #6c757d;
-      --light-gray: #e9ecef;
-      --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-      --transition: all 0.3s ease;
-      --border-radius: 8px;
+      --light-gray: #e8eaf6;
+      --shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+      --border-radius: 12px;
+      --gradient: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
     }
 
     * {
@@ -33,7 +34,7 @@
     }
 
     body {
-      font-family: 'Open Sans', sans-serif;
+      font-family: 'Poppins', sans-serif;
       line-height: 1.7;
       color: var(--dark);
       background-color: var(--light);
@@ -41,14 +42,14 @@
     }
 
     h1, h2, h3, h4 {
-      font-family: 'Merriweather', serif;
+      font-family: 'Playfair Display', serif;
       font-weight: 700;
       line-height: 1.3;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
     }
 
     h2 {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       position: relative;
       display: inline-block;
     }
@@ -56,12 +57,22 @@
     h2:after {
       content: '';
       position: absolute;
-      width: 60%;
-      height: 4px;
+      width: 80px;
+      height: 5px;
       background: var(--secondary);
-      bottom: -10px;
-      left: 20%;
-      border-radius: 2px;
+      bottom: -15px;
+      left: 0;
+      border-radius: 3px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title h2:after {
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     p {
@@ -77,7 +88,7 @@
     }
 
     section {
-      padding: 5rem 1.5rem;
+      padding: 6rem 1.5rem;
     }
 
     .container {
@@ -86,16 +97,11 @@
       width: 100%;
     }
 
-    .section-title {
-      text-align: center;
-      margin-bottom: 3.5rem;
-    }
-
     .btn {
       display: inline-block;
-      background: var(--primary);
+      background: var(--gradient);
       color: white;
-      padding: 0.9rem 2.2rem;
+      padding: 1rem 2.5rem;
       border-radius: 50px;
       font-weight: 600;
       border: none;
@@ -104,12 +110,30 @@
       font-size: 1rem;
       text-align: center;
       box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .btn:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: var(--secondary);
+      transition: var(--transition);
+      z-index: -1;
+    }
+
+    .btn:hover:before {
+      width: 100%;
     }
 
     .btn:hover {
-      background: var(--accent);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     }
 
     .btn-secondary {
@@ -117,20 +141,24 @@
       color: var(--dark);
     }
 
+    .btn-secondary:before {
+      background: var(--primary);
+    }
+
     /* Header */
     header {
-      background: rgba(255, 255, 255, 0.98);
-      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+      background: rgba(255, 255, 255, 0.97);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
       position: fixed;
       top: 0;
       width: 100%;
       z-index: 1000;
-      padding: 1rem 0;
+      padding: 1.2rem 0;
       transition: var(--transition);
     }
 
     header.scrolled {
-      padding: 0.7rem 0;
+      padding: 0.8rem 0;
     }
 
     .header-container {
@@ -141,14 +169,25 @@
     }
 
     .logo {
-      font-family: 'Merriweather', serif;
-      font-size: 1.8rem;
-      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 800;
       color: var(--primary);
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
     }
 
-    .logo span {
+    .logo-main {
+      font-size: 1.8rem;
+    }
+
+    .logo-sub {
+      font-size: 0.9rem;
+      font-weight: 400;
       color: var(--secondary);
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: 1px;
     }
 
     .nav-links {
@@ -157,20 +196,21 @@
     }
 
     .nav-links li {
-      margin-left: 2rem;
+      margin-left: 2.5rem;
     }
 
     .nav-links a {
       font-weight: 600;
       position: relative;
       padding: 0.5rem 0;
+      font-size: 1.05rem;
     }
 
     .nav-links a:after {
       content: '';
       position: absolute;
       width: 0;
-      height: 2px;
+      height: 3px;
       background: var(--secondary);
       bottom: 0;
       left: 0;
@@ -190,9 +230,10 @@
       display: none;
       background: none;
       border: none;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       color: var(--primary);
       cursor: pointer;
+      z-index: 1001;
     }
 
     /* Hero */
@@ -200,30 +241,57 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      background: linear-gradient(rgba(26, 90, 122, 0.85), rgba(26, 26, 46, 0.9)), url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+      background: linear-gradient(rgba(26, 35, 126, 0.85), rgba(13, 27, 42, 0.9)), url('https://images.unsplash.com/photo-1518834103328-93d45986dce1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
       color: white;
       text-align: center;
       padding-top: 5rem;
+      position: relative;
     }
 
     .hero-content {
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
+      position: relative;
+      z-index: 2;
     }
 
     .hero h1 {
-      font-size: 3.5rem;
+      font-size: 4rem;
       margin-bottom: 1.5rem;
-      text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.3);
+      text-shadow: 2px 3px 5px rgba(0, 0, 0, 0.3);
+      line-height: 1.1;
     }
 
     .hero p {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       color: rgba(255, 255, 255, 0.9);
       margin-bottom: 2.5rem;
+      font-family: 'Source Serif Pro', serif;
+    }
+
+    .vision-highlight {
+      background: rgba(212, 175, 55, 0.2);
+      border-left: 5px solid var(--secondary);
+      padding: 2rem;
+      margin: 3rem auto;
+      max-width: 700px;
+      border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    }
+
+    .vision-highlight h3 {
+      font-size: 2rem;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+
+    .vision-highlight p {
+      font-size: 1.8rem;
+      color: var(--secondary);
+      font-weight: 700;
+      letter-spacing: 1px;
     }
 
     /* About */
@@ -231,122 +299,174 @@
       background: white;
     }
 
-    .about-content {
+    .mission-container {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 4rem;
     }
 
-    .about-text p {
-      font-size: 1.15rem;
-      line-height: 1.8;
-    }
-
-    .about-image {
+    .mission-card {
+      background: var(--light);
+      padding: 2.5rem;
       border-radius: var(--border-radius);
-      overflow: hidden;
       box-shadow: var(--shadow);
-    }
-
-    .about-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-      transition: transform 0.5s ease;
-    }
-
-    .about-image:hover img {
-      transform: scale(1.03);
-    }
-
-    /* Sermons */
-    .sermons {
-      background: var(--light-gray);
-    }
-
-    .sermon-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-
-    .sermon-card {
-      background: white;
-      border-radius: var(--border-radius);
+      transition: var(--transition);
+      border-top: 5px solid var(--primary);
+      position: relative;
       overflow: hidden;
-      box-shadow: var(--shadow);
+    }
+
+    .mission-card:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 0;
+      background: var(--secondary);
       transition: var(--transition);
     }
 
-    .sermon-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
-    }
-
-    .sermon-image {
-      height: 200px;
-      overflow: hidden;
-    }
-
-    .sermon-image img {
-      width: 100%;
+    .mission-card:hover:before {
       height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
     }
 
-    .sermon-card:hover .sermon-image img {
-      transform: scale(1.05);
+    .mission-card:hover {
+      transform: translateY(-10px);
     }
 
-    .sermon-content {
-      padding: 1.5rem;
+    .mission-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
     }
 
-    .sermon-content h3 {
+    .mission-card h3 {
       color: var(--primary);
       font-size: 1.5rem;
-      margin-bottom: 0.8rem;
-    }
-
-    .sermon-content p {
-      font-size: 1rem;
-      margin-bottom: 1.2rem;
-    }
-
-    .sermon-meta {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.9rem;
-      color: var(--gray);
-    }
-
-    .sermon-box {
-      background: white;
-      padding: 2.5rem;
-      text-align: center;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
-      border-top: 5px solid var(--secondary);
-    }
-
-    .sermon-box i {
-      font-size: 2rem;
-      color: var(--secondary);
       margin-bottom: 1rem;
     }
 
-    /* Prayer */
-    .prayer {
+    /* Purpose */
+    .purpose {
+      background: var(--light-gray);
+      text-align: center;
+    }
+
+    .purpose-statement {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      padding: 3.5rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      border-left: 8px solid var(--secondary);
+    }
+
+    .purpose-statement h3 {
+      color: var(--primary);
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .purpose-statement p {
+      font-size: 1.3rem;
+      line-height: 1.8;
+      color: var(--dark);
+      font-family: 'Source Serif Pro', serif;
+    }
+
+    /* Core Values */
+    .values {
       background: white;
     }
 
-    .prayer-form-container {
-      max-width: 700px;
-      margin: 0 auto;
+    .values-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .value-card {
       background: var(--light);
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border-bottom: 4px solid transparent;
+    }
+
+    .value-card:hover {
+      transform: translateY(-8px);
+      border-bottom-color: var(--secondary);
+    }
+
+    .value-icon {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .value-card h4 {
+      color: var(--primary);
+      font-size: 1.3rem;
+    }
+
+    /* Contact */
+    .contact {
+      background: var(--light-gray);
+    }
+
+    .contact-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+
+    .contact-info {
+      background: white;
+      padding: 2.5rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-info h3 {
+      color: var(--primary);
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.8rem;
+    }
+
+    .contact-icon {
+      font-size: 1.5rem;
+      color: var(--secondary);
+      margin-right: 1.2rem;
+      margin-top: 0.3rem;
+      min-width: 30px;
+    }
+
+    .contact-details h4 {
+      color: var(--primary);
+      margin-bottom: 0.3rem;
+      font-size: 1.1rem;
+    }
+
+    .contact-details p {
+      margin-bottom: 0;
+      color: var(--gray);
+    }
+
+    .contact-form {
+      background: white;
       padding: 2.5rem;
       border-radius: var(--border-radius);
       box-shadow: var(--shadow);
@@ -368,7 +488,7 @@
       padding: 1rem;
       border: 1px solid #ddd;
       border-radius: var(--border-radius);
-      font-family: 'Open Sans', sans-serif;
+      font-family: 'Poppins', sans-serif;
       font-size: 1rem;
       transition: var(--transition);
     }
@@ -376,7 +496,7 @@
     .form-control:focus {
       outline: none;
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(26, 90, 122, 0.1);
+      box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
     }
 
     textarea.form-control {
@@ -385,7 +505,7 @@
     }
 
     .response-message {
-      padding: 1rem;
+      padding: 1.2rem;
       border-radius: var(--border-radius);
       text-align: center;
       margin-top: 1.5rem;
@@ -396,41 +516,6 @@
       background: #d4edda;
       color: #155724;
       display: block;
-    }
-
-    /* Contact */
-    .contact {
-      background: var(--light-gray);
-    }
-
-    .contact-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-
-    .contact-card {
-      background: white;
-      padding: 2rem;
-      border-radius: var(--border-radius);
-      text-align: center;
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-    }
-
-    .contact-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .contact-icon {
-      font-size: 2.5rem;
-      color: var(--primary);
-      margin-bottom: 1.2rem;
-    }
-
-    .contact-card h3 {
-      color: var(--primary);
-      margin-bottom: 0.5rem;
     }
 
     /* Footer */
@@ -444,15 +529,16 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 3rem;
-      margin-bottom: 2.5rem;
+      margin-bottom: 3rem;
     }
 
     .footer-logo {
-      font-family: 'Merriweather', serif;
+      font-family: 'Playfair Display', serif;
       font-size: 2rem;
-      font-weight: 700;
+      font-weight: 800;
       color: white;
       margin-bottom: 1rem;
+      line-height: 1.1;
     }
 
     .footer-logo span {
@@ -463,19 +549,27 @@
       color: rgba(255, 255, 255, 0.7);
     }
 
+    .footer-motto {
+      color: var(--secondary);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 1rem 0;
+      font-style: italic;
+    }
+
     .footer-links h3,
-    .footer-newsletter h3 {
-      font-size: 1.3rem;
+    .footer-contact h3 {
+      font-size: 1.4rem;
       margin-bottom: 1.5rem;
       position: relative;
       padding-bottom: 0.8rem;
     }
 
     .footer-links h3:after,
-    .footer-newsletter h3:after {
+    .footer-contact h3:after {
       content: '';
       position: absolute;
-      width: 40px;
+      width: 50px;
       height: 3px;
       background: var(--secondary);
       bottom: 0;
@@ -496,47 +590,26 @@
 
     .footer-links a:hover {
       color: var(--secondary);
-      padding-left: 5px;
+      padding-left: 8px;
     }
 
-    .footer-newsletter p {
+    .footer-contact p {
       color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 1.5rem;
-    }
-
-    .newsletter-form {
-      display: flex;
-    }
-
-    .newsletter-form input {
-      flex: 1;
-      padding: 0.9rem;
-      border: none;
-      border-radius: 50px 0 0 50px;
-    }
-
-    .newsletter-form button {
-      background: var(--secondary);
-      color: var(--dark);
-      border: none;
-      padding: 0 1.5rem;
-      border-radius: 0 50px 50px 0;
-      cursor: pointer;
-      font-weight: 600;
+      margin-bottom: 1rem;
     }
 
     .social-icons {
       display: flex;
-      gap: 1rem;
-      margin-top: 1.5rem;
+      gap: 1.2rem;
+      margin-top: 1.8rem;
     }
 
     .social-icons a {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
+      width: 45px;
+      height: 45px;
       background: rgba(255, 255, 255, 0.1);
       border-radius: 50%;
       transition: var(--transition);
@@ -545,14 +618,21 @@
     .social-icons a:hover {
       background: var(--secondary);
       color: var(--dark);
-      transform: translateY(-3px);
+      transform: translateY(-5px);
     }
 
     .footer-bottom {
       text-align: center;
-      padding-top: 2rem;
+      padding-top: 2.5rem;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
       color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
+    }
+
+    .compiled-by {
+      margin-top: 1.5rem;
+      color: var(--secondary);
+      font-weight: 600;
     }
 
     /* Back to top button */
@@ -560,20 +640,21 @@
       position: fixed;
       bottom: 2rem;
       right: 2rem;
-      width: 50px;
-      height: 50px;
-      background: var(--primary);
+      width: 55px;
+      height: 55px;
+      background: var(--gradient);
       color: white;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       opacity: 0;
       visibility: hidden;
       transition: var(--transition);
       z-index: 999;
+      font-size: 1.2rem;
     }
 
     .back-to-top.show {
@@ -582,41 +663,40 @@
     }
 
     .back-to-top:hover {
-      background: var(--accent);
-      transform: translateY(-5px);
+      background: var(--secondary);
+      transform: translateY(-8px);
     }
 
     /* Responsive Design */
     @media (max-width: 992px) {
       h2 {
-        font-size: 2.2rem;
+        font-size: 2.4rem;
       }
       
       .hero h1 {
-        font-size: 2.8rem;
+        font-size: 3.2rem;
       }
       
-      .about-content {
-        grid-template-columns: 1fr;
-        gap: 3rem;
+      .vision-highlight p {
+        font-size: 1.6rem;
       }
     }
 
     @media (max-width: 768px) {
       section {
-        padding: 4rem 1.5rem;
+        padding: 5rem 1.5rem;
       }
       
       h2 {
-        font-size: 2rem;
+        font-size: 2.1rem;
       }
       
       .hero h1 {
-        font-size: 2.3rem;
+        font-size: 2.5rem;
       }
       
       .hero p {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
       }
       
       .mobile-menu-btn {
@@ -625,60 +705,68 @@
       
       .nav-links {
         position: fixed;
-        top: 70px;
+        top: 0;
         left: 0;
         width: 100%;
+        height: 100vh;
         background: white;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
         padding: 2rem 0;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        transform: translateY(-100%);
+        transform: translateX(-100%);
         opacity: 0;
         visibility: hidden;
         transition: var(--transition);
       }
       
       .nav-links.show {
-        transform: translateY(0);
+        transform: translateX(0);
         opacity: 1;
         visibility: visible;
       }
       
       .nav-links li {
-        margin: 0 0 1.5rem 0;
+        margin: 0 0 2rem 0;
       }
       
-      .prayer-form-container {
-        padding: 1.5rem;
+      .nav-links a {
+        font-size: 1.3rem;
+      }
+      
+      .mission-container,
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .purpose-statement {
+        padding: 2.5rem 1.5rem;
       }
     }
 
     @media (max-width: 576px) {
       .hero h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
       }
       
-      .btn {
-        padding: 0.8rem 1.8rem;
+      .vision-highlight {
+        padding: 1.5rem;
       }
       
-      .sermon-container {
+      .vision-highlight h3 {
+        font-size: 1.5rem;
+      }
+      
+      .vision-highlight p {
+        font-size: 1.4rem;
+      }
+      
+      .values-container {
         grid-template-columns: 1fr;
       }
       
-      .newsletter-form {
-        flex-direction: column;
-      }
-      
-      .newsletter-form input {
-        border-radius: 50px;
-        margin-bottom: 0.8rem;
-      }
-      
-      .newsletter-form button {
-        border-radius: 50px;
-        padding: 0.8rem;
+      .footer-container {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -688,7 +776,10 @@
   <!-- Header -->
   <header id="header">
     <div class="container header-container">
-      <a href="#" class="logo">Rev. <span>ICN Olang</span> Ministries</a>
+      <a href="#" class="logo">
+        <span class="logo-main">Active Word Apostolic Centre</span>
+        <span class="logo-sub">Building Living Temples</span>
+      </a>
       
       <button class="mobile-menu-btn" id="mobileMenuBtn">
         <i class="fas fa-bars"></i>
@@ -696,9 +787,9 @@
       
       <ul class="nav-links" id="navLinks">
         <li><a href="#home" class="active">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#sermons">Sermons</a></li>
-        <li><a href="#prayer">Prayer</a></li>
+        <li><a href="#vision">Vision & Mission</a></li>
+        <li><a href="#purpose">Purpose</a></li>
+        <li><a href="#values">Core Values</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -707,122 +798,148 @@
   <!-- Hero Section -->
   <section id="home" class="hero">
     <div class="container hero-content">
-      <h1>Raising Lives Through the Word of God</h1>
-      <p>Welcome to the official ministry website of Rev. ICN Olang. A place for spiritual growth, healing, and transformation through the power of the Gospel.</p>
-      <a href="#prayer" class="btn btn-secondary">Request Prayer</a>
+      <h1>Active Word Apostolic Centre</h1>
+      <p>A ministry dedicated to winning, building, and releasing believers for God's kingdom work.</p>
+      
+      <div class="vision-highlight">
+        <h3>OUR VISION:</h3>
+        <p>Win one, Build one, Release one</p>
+      </div>
+      
+      <a href="#contact" class="btn">Connect With Us</a>
     </div>
   </section>
 
-  <!-- About Section -->
-  <section id="about" class="about">
+  <!-- Mission Section -->
+  <section id="vision" class="about">
     <div class="container">
       <div class="section-title">
-        <h2>About Rev. ICN Olang</h2>
+        <h2>Our Mission</h2>
+        <p>Equipping believers for successful ministry and life mission</p>
       </div>
       
-      <div class="about-content">
-        <div class="about-text">
-          <p>Rev. ICN Olang is a devoted servant of God called to preach, teach, and restore lives through the Gospel of Jesus Christ.</p>
-          <p>With over 15 years of ministry experience, Rev. Olang has impacted countless individuals across nations through powerful teachings, healing services, and compassionate outreach.</p>
-          <p>His ministry focuses on the transformative power of God's Word to bring hope, healing, and purpose to every life.</p>
+      <div class="mission-container">
+        <div class="mission-card">
+          <div class="mission-icon">
+            <i class="fas fa-book-bible"></i>
+          </div>
+          <h3>Biblical Understanding</h3>
+          <p>Equip the believer with proper understanding of God, the Church, the world, the devil and who they are in Christ to succeed in their calling.</p>
         </div>
         
-        <div class="about-image">
-          <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Rev. ICN Olang">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sermons Section -->
-  <section id="sermons" class="sermons">
-    <div class="container">
-      <div class="section-title">
-        <h2>Sermons & Teachings</h2>
-        <p>Watch and listen to powerful messages that will transform your life and strengthen your faith.</p>
-      </div>
-      
-      <div class="sermon-container">
-        <div class="sermon-card">
-          <div class="sermon-image">
-            <img src="https://images.unsplash.com/photo-1509023464722-18d996393ca8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="The Power of Faith">
+        <div class="mission-card">
+          <div class="mission-icon">
+            <i class="fas fa-graduation-cap"></i>
           </div>
-          <div class="sermon-content">
-            <h3>The Power of Faith</h3>
-            <p>Discover how to activate your faith in challenging times and see God's miracles in your life.</p>
-            <div class="sermon-meta">
-              <span><i class="far fa-clock"></i> 45 min</span>
-              <span><i class="far fa-calendar"></i> Apr 15, 2025</span>
-            </div>
-          </div>
+          <h3>Training & Activation</h3>
+          <p>Train believers for the harvest field and activate the gifts and talents of the Holy Spirit constrained by ignorance.</p>
         </div>
         
-        <div class="sermon-card">
-          <div class="sermon-image">
-            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Overcoming Fear">
+        <div class="mission-card">
+          <div class="mission-icon">
+            <i class="fas fa-hands-helping"></i>
           </div>
-          <div class="sermon-content">
-            <h3>Overcoming Fear</h3>
-            <p>Learn biblical principles to conquer fear and walk in God's perfect love and confidence.</p>
-            <div class="sermon-meta">
-              <span><i class="far fa-clock"></i> 38 min</span>
-              <span><i class="far fa-calendar"></i> Mar 28, 2025</span>
-            </div>
-          </div>
+          <h3>Release & Restoration</h3>
+          <p>Release mature believers as co-laborers with Christ and restore foundational apostolic doctrine while mending cracks in Christian leadership.</p>
         </div>
         
-        <div class="sermon-card">
-          <div class="sermon-image">
-            <img src="https://images.unsplash.com/photo-1518834103328-93d45986dce1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Living in Purpose">
+        <div class="mission-card">
+          <div class="mission-icon">
+            <i class="fas fa-globe-africa"></i>
           </div>
-          <div class="sermon-content">
-            <h3>Living in Purpose</h3>
-            <p>Find and fulfill God's unique purpose for your life through this empowering message.</p>
-            <div class="sermon-meta">
-              <span><i class="far fa-clock"></i> 52 min</span>
-              <span><i class="far fa-calendar"></i> Mar 10, 2025</span>
-            </div>
-          </div>
+          <h3>Great Commission</h3>
+          <p>Facilitate aggressive propagation of the great commission through teaching the whole counsel of God without adding or subtracting.</p>
         </div>
-      </div>
-      
-      <div class="sermon-box">
-        <i class="fas fa-video"></i>
-        <h3>More Sermons Coming Soon</h3>
-        <p>New video teachings and sermons are added regularly. Subscribe to our newsletter to stay updated.</p>
       </div>
     </div>
   </section>
 
-  <!-- Prayer Section -->
-  <section id="prayer" class="prayer">
+  <!-- Purpose Section -->
+  <section id="purpose" class="purpose">
     <div class="container">
       <div class="section-title">
-        <h2>Prayer Requests</h2>
-        <p>We believe in the power of prayer. Share your request and our prayer team will intercede for you.</p>
+        <h2>Our Purpose</h2>
       </div>
       
-      <div class="prayer-form-container">
-        <form id="prayerForm">
-          <div class="form-group">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+      <div class="purpose-statement">
+        <h3>PURPOSE STATEMENT</h3>
+        <p>Win people to Jesus, incorporate them into God's family, develop them to Christlike maturity, equip them for ministry and life mission in the world to glorify God.</p>
+        <div class="footer-motto">BUILDING LIVING TEMPLES!</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Values -->
+  <section id="values" class="values">
+    <div class="container">
+      <div class="section-title">
+        <h2>Core Values</h2>
+        <p>The foundation upon which our ministry stands</p>
+      </div>
+      
+      <div class="values-container">
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-church"></i>
           </div>
-          
-          <div class="form-group">
-            <label for="email">Your Email (optional)</label>
-            <input type="email" id="email" class="form-control" placeholder="Enter your email">
-          </div>
-          
-          <div class="form-group">
-            <label for="request">Your Prayer Request</label>
-            <textarea id="request" class="form-control" placeholder="Please share your prayer request here..." rows="5" required></textarea>
-          </div>
-          
-          <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Submit Prayer Request</button>
-        </form>
+          <h4>Holiness</h4>
+        </div>
         
-        <div id="responseMessage" class="response-message"></div>
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+          <h4>Love</h4>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-hands-praying"></i>
+          </div>
+          <h4>Humility</h4>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-pray"></i>
+          </div>
+          <h4>Prayer</h4>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-user-tie"></i>
+          </div>
+          <h4>Servant hood</h4>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-hand-holding-heart"></i>
+          </div>
+          <h4>Stewardship</h4>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-book-open"></i>
+          </div>
+          <h4>Scholarship</h4>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-medal"></i>
+          </div>
+          <h4>Excellence</h4>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h4>Integrity</h4>
+        </div>
       </div>
     </div>
   </section>
@@ -832,32 +949,91 @@
     <div class="container">
       <div class="section-title">
         <h2>Contact Us</h2>
-        <p>We'd love to hear from you. Reach out to us for ministry inquiries, counseling, or partnership.</p>
+        <p>Get in touch with us for ministry inquiries, prayer, or partnership</p>
       </div>
       
       <div class="contact-container">
-        <div class="contact-card">
-          <div class="contact-icon">
-            <i class="fas fa-envelope"></i>
+        <div class="contact-info">
+          <h3>Contact Information</h3>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Rev. I.C.N. Olang</h4>
+              <p>Founder & Senior Pastor</p>
+            </div>
           </div>
-          <h3>Email</h3>
-          <p>info@icnolang.org</p>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Email Addresses</h4>
+              <p>isaacolang@gmail.com</p>
+              <p>Pastolang@yahoo.com</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Phone Numbers</h4>
+              <p>+254 723 322 295</p>
+              <p>+254 712 100 828</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Location</h4>
+              <p>Active Word Apostolic Centre</p>
+              <p>Nairobi, Kenya</p>
+            </div>
+          </div>
+          
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+          </div>
         </div>
         
-        <div class="contact-card">
-          <div class="contact-icon">
-            <i class="fas fa-phone"></i>
-          </div>
-          <h3>Phone</h3>
-          <p>+254 712 345 678</p>
-        </div>
-        
-        <div class="contact-card">
-          <div class="contact-icon">
-            <i class="fas fa-map-marker-alt"></i>
-          </div>
-          <h3>Location</h3>
-          <p>Nairobi, Kenya</p>
+        <div class="contact-form">
+          <h3>Send Us a Message</h3>
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Your Email</label>
+              <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" class="form-control" placeholder="Message subject">
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea id="message" class="form-control" placeholder="How can we help you?" rows="5" required></textarea>
+            </div>
+            
+            <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+          </form>
+          
+          <div id="responseMessage" class="response-message"></div>
         </div>
       </div>
     </div>
@@ -868,8 +1044,9 @@
     <div class="container">
       <div class="footer-container">
         <div class="footer-about">
-          <div class="footer-logo">Rev. <span>ICN Olang</span></div>
-          <p>Raising lives through the Word of God. A ministry dedicated to spiritual growth, healing, and transformation.</p>
+          <div class="footer-logo">Active Word <span>Apostolic Centre</span></div>
+          <p class="footer-motto">BUILDING LIVING TEMPLES!</p>
+          <p>Raising lives through the Word of God. A ministry dedicated to winning, building, and releasing believers for kingdom work.</p>
           <div class="social-icons">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-youtube"></i></a>
@@ -882,25 +1059,27 @@
           <h3>Quick Links</h3>
           <ul>
             <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#sermons">Sermons</a></li>
-            <li><a href="#prayer">Prayer Request</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#vision">Vision & Mission</a></li>
+            <li><a href="#purpose">Purpose Statement</a></li>
+            <li><a href="#values">Core Values</a></li>
+            <li><a href="#contact">Contact Us</a></li>
           </ul>
         </div>
         
-        <div class="footer-newsletter">
-          <h3>Stay Connected</h3>
-          <p>Subscribe to our newsletter for updates on sermons, events, and ministry news.</p>
-          <form class="newsletter-form">
-            <input type="email" placeholder="Your email address">
-            <button type="submit"><i class="fas fa-paper-plane"></i></button>
-          </form>
+        <div class="footer-contact">
+          <h3>Contact Info</h3>
+          <p><i class="fas fa-envelope"></i> isaacolang@gmail.com</p>
+          <p><i class="fas fa-phone"></i> +254 723 322 295</p>
+          <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
+          <div class="compiled-by">
+            <p>Compiled by Rev. I.C.N. Olang</p>
+          </div>
         </div>
       </div>
       
       <div class="footer-bottom">
-        <p>&copy; 2025 Rev. ICN Olang Ministries. All Rights Reserved.</p>
+        <p>&copy; 2025 Active Word Apostolic Centre. All Rights Reserved.</p>
+        <p>Win one, Build one, Release one</p>
       </div>
     </div>
   </footer>
@@ -941,16 +1120,16 @@
       }
     });
     
-    // Handle prayer form submission
-    document.getElementById('prayerForm').addEventListener('submit', function (e) {
+    // Handle contact form submission
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
       e.preventDefault();
       
       const responseMessage = document.getElementById('responseMessage');
       responseMessage.innerHTML = `
         <i class="fas fa-check-circle"></i> 
-        <h3>Thank You!</h3>
-        <p>Your prayer request has been received. Our prayer team will intercede for you.</p>
-        <p><small>You will receive a confirmation email shortly.</small></p>
+        <h3>Message Sent Successfully!</h3>
+        <p>Thank you for contacting Active Word Apostolic Centre. We will respond to your message shortly.</p>
+        <p><small>You may also reach us directly at +254 723 322 295</small></p>
       `;
       responseMessage.classList.add('success');
       
@@ -1006,6 +1185,37 @@
           item.classList.add('active');
         }
       });
+    });
+    
+    // Add animation to mission cards on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+    
+    // Observe mission cards
+    document.querySelectorAll('.mission-card').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px)';
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(card);
+    });
+    
+    // Observe value cards
+    document.querySelectorAll('.value-card').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(card);
     });
   </script>
 </body>
