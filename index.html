@@ -5,22 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Active Word Apostolic Centre</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700;800&family=Source+Serif+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #1a237e;
-      --secondary: #d4af37;
-      --accent: #004d40;
-      --light: #f5f5f7;
-      --dark: #0d1b2a;
+      --primary: #2c3e50;
+      --secondary: #e74c3c;
+      --accent: #3498db;
+      --light: #f8f9fa;
+      --dark: #1a1a2e;
       --gray: #6c757d;
-      --light-gray: #e8eaf6;
-      --shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-      --border-radius: 12px;
-      --gradient: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      --light-gray: #e9ecef;
+      --success: #27ae60;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      --transition: all 0.3s ease;
     }
 
     * {
@@ -34,51 +31,50 @@
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
-      line-height: 1.7;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
       color: var(--dark);
-      background-color: var(--light);
+      background-color: white;
       overflow-x: hidden;
     }
 
     h1, h2, h3, h4 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Source Serif Pro', serif;
       font-weight: 700;
       line-height: 1.3;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
     }
 
     h2 {
-      font-size: 2.8rem;
+      font-size: 2.5rem;
       position: relative;
-      display: inline-block;
-    }
-
-    h2:after {
-      content: '';
-      position: absolute;
-      width: 80px;
-      height: 5px;
-      background: var(--secondary);
-      bottom: -15px;
-      left: 0;
-      border-radius: 3px;
     }
 
     .section-title {
       text-align: center;
-      margin-bottom: 4rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-title h2 {
+      display: inline-block;
     }
 
     .section-title h2:after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 4px;
+      background: var(--secondary);
+      bottom: -10px;
       left: 50%;
       transform: translateX(-50%);
+      border-radius: 2px;
     }
 
     p {
-      margin-bottom: 1.5rem;
-      font-size: 1.1rem;
+      margin-bottom: 1.2rem;
       color: var(--gray);
+      font-size: 1.05rem;
     }
 
     a {
@@ -88,7 +84,8 @@
     }
 
     section {
-      padding: 6rem 1.5rem;
+      padding: 5rem 1.5rem;
+      overflow: hidden;
     }
 
     .container {
@@ -99,10 +96,10 @@
 
     .btn {
       display: inline-block;
-      background: var(--gradient);
+      background: var(--primary);
       color: white;
-      padding: 1rem 2.5rem;
-      border-radius: 50px;
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
       font-weight: 600;
       border: none;
       cursor: pointer;
@@ -112,53 +109,138 @@
       box-shadow: var(--shadow);
       position: relative;
       overflow: hidden;
-      z-index: 1;
     }
 
     .btn:before {
       content: '';
       position: absolute;
       top: 0;
-      left: 0;
-      width: 0;
+      left: -100%;
+      width: 100%;
       height: 100%;
-      background: var(--secondary);
-      transition: var(--transition);
-      z-index: -1;
+      background: rgba(255, 255, 255, 0.2);
+      transition: all 0.5s ease;
     }
 
     .btn:hover:before {
-      width: 100%;
+      left: 100%;
     }
 
     .btn:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      background: var(--secondary);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
     }
 
     .btn-secondary {
       background: var(--secondary);
-      color: var(--dark);
     }
 
-    .btn-secondary:before {
+    .btn-secondary:hover {
       background: var(--primary);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .animate-on-scroll.animated {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* Header */
     header {
-      background: rgba(255, 255, 255, 0.97);
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
       position: fixed;
       top: 0;
       width: 100%;
       z-index: 1000;
-      padding: 1.2rem 0;
+      padding: 1rem 0;
       transition: var(--transition);
+      animation: fadeInDown 0.5s ease;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     header.scrolled {
-      padding: 0.8rem 0;
+      padding: 0.7rem 0;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
     }
 
     .header-container {
@@ -169,48 +251,39 @@
     }
 
     .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--primary);
-      display: flex;
-      flex-direction: column;
-      line-height: 1.1;
-    }
-
-    .logo-main {
+      font-family: 'Source Serif Pro', serif;
       font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      animation: fadeInLeft 0.8s ease;
     }
 
-    .logo-sub {
-      font-size: 0.9rem;
-      font-weight: 400;
+    .logo span {
       color: var(--secondary);
-      font-family: 'Poppins', sans-serif;
-      letter-spacing: 1px;
     }
 
     .nav-links {
       display: flex;
       list-style: none;
+      animation: fadeInRight 0.8s ease;
     }
 
     .nav-links li {
-      margin-left: 2.5rem;
+      margin-left: 2rem;
     }
 
     .nav-links a {
       font-weight: 600;
       position: relative;
       padding: 0.5rem 0;
-      font-size: 1.05rem;
+      font-size: 1rem;
     }
 
     .nav-links a:after {
       content: '';
       position: absolute;
       width: 0;
-      height: 3px;
+      height: 2px;
       background: var(--secondary);
       bottom: 0;
       left: 0;
@@ -223,14 +296,14 @@
     }
 
     .nav-links a:hover {
-      color: var(--primary);
+      color: var(--secondary);
     }
 
     .mobile-menu-btn {
       display: none;
       background: none;
       border: none;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       color: var(--primary);
       cursor: pointer;
       z-index: 1001;
@@ -241,10 +314,9 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      background: linear-gradient(rgba(26, 35, 126, 0.85), rgba(13, 27, 42, 0.9)), url('https://images.unsplash.com/photo-1518834103328-93d45986dce1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+      background: linear-gradient(135deg, rgba(44, 62, 80, 0.9) 0%, rgba(26, 26, 46, 0.95) 100%), url('https://images.unsplash.com/photo-1509023464722-18d996393ca8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
       background-size: cover;
       background-position: center;
-      background-attachment: fixed;
       color: white;
       text-align: center;
       padding-top: 5rem;
@@ -252,67 +324,73 @@
     }
 
     .hero-content {
-      max-width: 900px;
+      max-width: 800px;
       margin: 0 auto;
       position: relative;
       z-index: 2;
     }
 
     .hero h1 {
-      font-size: 4rem;
+      font-size: 3.5rem;
       margin-bottom: 1.5rem;
-      text-shadow: 2px 3px 5px rgba(0, 0, 0, 0.3);
-      line-height: 1.1;
+      animation: fadeInUp 1s ease 0.2s both;
     }
 
     .hero p {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       color: rgba(255, 255, 255, 0.9);
       margin-bottom: 2.5rem;
-      font-family: 'Source Serif Pro', serif;
+      animation: fadeInUp 1s ease 0.4s both;
     }
 
-    .vision-highlight {
-      background: rgba(212, 175, 55, 0.2);
-      border-left: 5px solid var(--secondary);
-      padding: 2rem;
+    .vision-box {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 10px;
+      padding: 2.5rem;
       margin: 3rem auto;
-      max-width: 700px;
-      border-radius: 0 var(--border-radius) var(--border-radius) 0;
+      max-width: 600px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      animation: fadeInUp 1s ease 0.6s both;
     }
 
-    .vision-highlight h3 {
-      font-size: 2rem;
+    .vision-box h3 {
       color: white;
-      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
     }
 
-    .vision-highlight p {
-      font-size: 1.8rem;
-      color: var(--secondary);
+    .vision-box p {
+      font-size: 2rem;
+      color: #ffcc00;
       font-weight: 700;
       letter-spacing: 1px;
+      margin-bottom: 0;
+      animation: pulse 2s infinite;
     }
 
-    /* About */
-    .about {
-      background: white;
+    .hero .btn {
+      animation: fadeInUp 1s ease 0.8s both;
+    }
+
+    /* Mission */
+    .mission {
+      background: var(--light);
     }
 
     .mission-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2.5rem;
-      margin-bottom: 4rem;
+      gap: 2rem;
+      margin-bottom: 3rem;
     }
 
     .mission-card {
-      background: var(--light);
-      padding: 2.5rem;
-      border-radius: var(--border-radius);
+      background: white;
+      padding: 2.5rem 2rem;
+      border-radius: 8px;
       box-shadow: var(--shadow);
       transition: var(--transition);
-      border-top: 5px solid var(--primary);
       position: relative;
       overflow: hidden;
     }
@@ -325,7 +403,7 @@
       width: 5px;
       height: 0;
       background: var(--secondary);
-      transition: var(--transition);
+      transition: height 0.4s ease;
     }
 
     .mission-card:hover:before {
@@ -334,90 +412,105 @@
 
     .mission-card:hover {
       transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
     }
 
     .mission-icon {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       color: var(--primary);
       margin-bottom: 1.5rem;
+      display: inline-block;
+      animation: float 3s ease-in-out infinite;
     }
 
     .mission-card h3 {
       color: var(--primary);
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       margin-bottom: 1rem;
     }
 
     /* Purpose */
     .purpose {
-      background: var(--light-gray);
+      background: white;
       text-align: center;
     }
 
-    .purpose-statement {
+    .purpose-box {
+      background: var(--light);
+      padding: 3.5rem;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
       max-width: 900px;
       margin: 0 auto;
-      background: white;
-      padding: 3.5rem;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
-      border-left: 8px solid var(--secondary);
+      border-left: 6px solid var(--secondary);
+      animation: slideIn 0.8s ease;
     }
 
-    .purpose-statement h3 {
+    .purpose-box h3 {
       color: var(--primary);
       font-size: 1.8rem;
       margin-bottom: 1.5rem;
     }
 
-    .purpose-statement p {
+    .purpose-box p {
       font-size: 1.3rem;
       line-height: 1.8;
       color: var(--dark);
-      font-family: 'Source Serif Pro', serif;
     }
 
-    /* Core Values */
+    .motto {
+      display: inline-block;
+      background: var(--secondary);
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin-top: 1.5rem;
+      animation: pulse 2s infinite;
+    }
+
+    /* Values */
     .values {
-      background: white;
+      background: var(--light);
     }
 
     .values-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 1.5rem;
       margin-top: 3rem;
     }
 
     .value-card {
-      background: var(--light);
-      padding: 2rem;
-      border-radius: var(--border-radius);
+      background: white;
+      padding: 2rem 1.5rem;
+      border-radius: 8px;
       text-align: center;
       box-shadow: var(--shadow);
       transition: var(--transition);
-      border-bottom: 4px solid transparent;
     }
 
     .value-card:hover {
-      transform: translateY(-8px);
-      border-bottom-color: var(--secondary);
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
     }
 
     .value-icon {
-      font-size: 2.2rem;
-      color: var(--primary);
+      font-size: 2rem;
+      color: var(--secondary);
       margin-bottom: 1rem;
+      display: inline-block;
     }
 
     .value-card h4 {
       color: var(--primary);
-      font-size: 1.3rem;
+      font-size: 1.2rem;
     }
 
     /* Contact */
     .contact {
-      background: var(--light-gray);
+      background: white;
     }
 
     .contact-container {
@@ -428,9 +521,9 @@
     }
 
     .contact-info {
-      background: white;
+      background: var(--light);
       padding: 2.5rem;
-      border-radius: var(--border-radius);
+      border-radius: 10px;
       box-shadow: var(--shadow);
     }
 
@@ -442,7 +535,7 @@
 
     .contact-item {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       margin-bottom: 1.8rem;
     }
 
@@ -450,7 +543,6 @@
       font-size: 1.5rem;
       color: var(--secondary);
       margin-right: 1.2rem;
-      margin-top: 0.3rem;
       min-width: 30px;
     }
 
@@ -466,9 +558,9 @@
     }
 
     .contact-form {
-      background: white;
+      background: var(--light);
       padding: 2.5rem;
-      border-radius: var(--border-radius);
+      border-radius: 10px;
       box-shadow: var(--shadow);
     }
 
@@ -487,16 +579,16 @@
       width: 100%;
       padding: 1rem;
       border: 1px solid #ddd;
-      border-radius: var(--border-radius);
-      font-family: 'Poppins', sans-serif;
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
       font-size: 1rem;
       transition: var(--transition);
     }
 
     .form-control:focus {
       outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
     }
 
     textarea.form-control {
@@ -506,10 +598,11 @@
 
     .response-message {
       padding: 1.2rem;
-      border-radius: var(--border-radius);
+      border-radius: 4px;
       text-align: center;
       margin-top: 1.5rem;
       display: none;
+      animation: slideIn 0.5s ease;
     }
 
     .response-message.success {
@@ -533,20 +626,15 @@
     }
 
     .footer-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      font-weight: 800;
+      font-family: 'Source Serif Pro', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
       color: white;
       margin-bottom: 1rem;
-      line-height: 1.1;
     }
 
     .footer-logo span {
       color: var(--secondary);
-    }
-
-    .footer-about p {
-      color: rgba(255, 255, 255, 0.7);
     }
 
     .footer-motto {
@@ -554,12 +642,15 @@
       font-size: 1.5rem;
       font-weight: 700;
       margin: 1rem 0;
-      font-style: italic;
+    }
+
+    .footer-about p {
+      color: rgba(255, 255, 255, 0.7);
     }
 
     .footer-links h3,
     .footer-contact h3 {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       margin-bottom: 1.5rem;
       position: relative;
       padding-bottom: 0.8rem;
@@ -569,7 +660,7 @@
     .footer-contact h3:after {
       content: '';
       position: absolute;
-      width: 50px;
+      width: 40px;
       height: 3px;
       background: var(--secondary);
       bottom: 0;
@@ -590,7 +681,7 @@
 
     .footer-links a:hover {
       color: var(--secondary);
-      padding-left: 8px;
+      padding-left: 5px;
     }
 
     .footer-contact p {
@@ -600,16 +691,16 @@
 
     .social-icons {
       display: flex;
-      gap: 1.2rem;
-      margin-top: 1.8rem;
+      gap: 1rem;
+      margin-top: 1.5rem;
     }
 
     .social-icons a {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 45px;
-      height: 45px;
+      width: 40px;
+      height: 40px;
       background: rgba(255, 255, 255, 0.1);
       border-radius: 50%;
       transition: var(--transition);
@@ -618,7 +709,7 @@
     .social-icons a:hover {
       background: var(--secondary);
       color: var(--dark);
-      transform: translateY(-5px);
+      transform: translateY(-5px) rotate(10deg);
     }
 
     .footer-bottom {
@@ -626,7 +717,6 @@
       padding-top: 2.5rem;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
       color: rgba(255, 255, 255, 0.6);
-      font-size: 0.9rem;
     }
 
     .compiled-by {
@@ -640,9 +730,9 @@
       position: fixed;
       bottom: 2rem;
       right: 2rem;
-      width: 55px;
-      height: 55px;
-      background: var(--gradient);
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
       color: white;
       border-radius: 50%;
       display: flex;
@@ -654,7 +744,6 @@
       visibility: hidden;
       transition: var(--transition);
       z-index: 999;
-      font-size: 1.2rem;
     }
 
     .back-to-top.show {
@@ -664,31 +753,32 @@
 
     .back-to-top:hover {
       background: var(--secondary);
-      transform: translateY(-8px);
+      transform: translateY(-5px) scale(1.1);
+      animation: pulse 1s infinite;
     }
 
     /* Responsive Design */
     @media (max-width: 992px) {
       h2 {
-        font-size: 2.4rem;
+        font-size: 2.2rem;
       }
       
       .hero h1 {
-        font-size: 3.2rem;
+        font-size: 3rem;
       }
       
-      .vision-highlight p {
-        font-size: 1.6rem;
+      .vision-box p {
+        font-size: 1.8rem;
       }
     }
 
     @media (max-width: 768px) {
       section {
-        padding: 5rem 1.5rem;
+        padding: 4rem 1.5rem;
       }
       
       h2 {
-        font-size: 2.1rem;
+        font-size: 2rem;
       }
       
       .hero h1 {
@@ -739,8 +829,12 @@
         grid-template-columns: 1fr;
       }
       
-      .purpose-statement {
+      .purpose-box {
         padding: 2.5rem 1.5rem;
+      }
+      
+      .values-container {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
@@ -749,16 +843,12 @@
         font-size: 2.2rem;
       }
       
-      .vision-highlight {
-        padding: 1.5rem;
+      .vision-box {
+        padding: 2rem 1.5rem;
       }
       
-      .vision-highlight h3 {
-        font-size: 1.5rem;
-      }
-      
-      .vision-highlight p {
-        font-size: 1.4rem;
+      .vision-box p {
+        font-size: 1.6rem;
       }
       
       .values-container {
@@ -776,10 +866,7 @@
   <!-- Header -->
   <header id="header">
     <div class="container header-container">
-      <a href="#" class="logo">
-        <span class="logo-main">Active Word Apostolic Centre</span>
-        <span class="logo-sub">Building Living Temples</span>
-      </a>
+      <a href="#" class="logo">Active Word <span>Apostolic</span></a>
       
       <button class="mobile-menu-btn" id="mobileMenuBtn">
         <i class="fas fa-bars"></i>
@@ -787,9 +874,9 @@
       
       <ul class="nav-links" id="navLinks">
         <li><a href="#home" class="active">Home</a></li>
-        <li><a href="#vision">Vision & Mission</a></li>
+        <li><a href="#mission">Mission</a></li>
         <li><a href="#purpose">Purpose</a></li>
-        <li><a href="#values">Core Values</a></li>
+        <li><a href="#values">Values</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -799,10 +886,10 @@
   <section id="home" class="hero">
     <div class="container hero-content">
       <h1>Active Word Apostolic Centre</h1>
-      <p>A ministry dedicated to winning, building, and releasing believers for God's kingdom work.</p>
+      <p>Building Living Temples through the Word of God</p>
       
-      <div class="vision-highlight">
-        <h3>OUR VISION:</h3>
+      <div class="vision-box">
+        <h3>OUR VISION</h3>
         <p>Win one, Build one, Release one</p>
       </div>
       
@@ -811,44 +898,44 @@
   </section>
 
   <!-- Mission Section -->
-  <section id="vision" class="about">
+  <section id="mission" class="mission">
     <div class="container">
       <div class="section-title">
         <h2>Our Mission</h2>
-        <p>Equipping believers for successful ministry and life mission</p>
+        <p>Equipping believers for God's kingdom work</p>
       </div>
       
       <div class="mission-container">
-        <div class="mission-card">
+        <div class="mission-card animate-on-scroll">
           <div class="mission-icon">
             <i class="fas fa-book-bible"></i>
           </div>
           <h3>Biblical Understanding</h3>
-          <p>Equip the believer with proper understanding of God, the Church, the world, the devil and who they are in Christ to succeed in their calling.</p>
+          <p>Equip believers with proper understanding of God, the Church, the world, and their identity in Christ.</p>
         </div>
         
-        <div class="mission-card">
+        <div class="mission-card animate-on-scroll">
           <div class="mission-icon">
             <i class="fas fa-graduation-cap"></i>
           </div>
           <h3>Training & Activation</h3>
-          <p>Train believers for the harvest field and activate the gifts and talents of the Holy Spirit constrained by ignorance.</p>
+          <p>Train believers for the harvest field and activate the gifts of the Holy Spirit.</p>
         </div>
         
-        <div class="mission-card">
+        <div class="mission-card animate-on-scroll">
           <div class="mission-icon">
             <i class="fas fa-hands-helping"></i>
           </div>
           <h3>Release & Restoration</h3>
-          <p>Release mature believers as co-laborers with Christ and restore foundational apostolic doctrine while mending cracks in Christian leadership.</p>
+          <p>Release mature believers as co-laborers and restore foundational apostolic doctrine.</p>
         </div>
         
-        <div class="mission-card">
+        <div class="mission-card animate-on-scroll">
           <div class="mission-icon">
             <i class="fas fa-globe-africa"></i>
           </div>
           <h3>Great Commission</h3>
-          <p>Facilitate aggressive propagation of the great commission through teaching the whole counsel of God without adding or subtracting.</p>
+          <p>Facilitate aggressive propagation of the great commission through God's Word.</p>
         </div>
       </div>
     </div>
@@ -861,10 +948,10 @@
         <h2>Our Purpose</h2>
       </div>
       
-      <div class="purpose-statement">
+      <div class="purpose-box animate-on-scroll">
         <h3>PURPOSE STATEMENT</h3>
         <p>Win people to Jesus, incorporate them into God's family, develop them to Christlike maturity, equip them for ministry and life mission in the world to glorify God.</p>
-        <div class="footer-motto">BUILDING LIVING TEMPLES!</div>
+        <div class="motto">BUILDING LIVING TEMPLES!</div>
       </div>
     </div>
   </section>
@@ -874,67 +961,67 @@
     <div class="container">
       <div class="section-title">
         <h2>Core Values</h2>
-        <p>The foundation upon which our ministry stands</p>
+        <p>The foundation of our ministry</p>
       </div>
       
       <div class="values-container">
-        <div class="value-card">
+        <div class="value-card animate-on-scroll">
           <div class="value-icon">
             <i class="fas fa-church"></i>
           </div>
           <h4>Holiness</h4>
         </div>
         
-        <div class="value-card">
+        <div class="value-card animate-on-scroll">
           <div class="value-icon">
             <i class="fas fa-heart"></i>
           </div>
           <h4>Love</h4>
         </div>
         
-        <div class="value-card">
+        <div class="value-card animate-on-scroll">
           <div class="value-icon">
             <i class="fas fa-hands-praying"></i>
           </div>
           <h4>Humility</h4>
         </div>
         
-        <div class="value-card">
+        <div class="value-card animate-on-scroll">
           <div class="value-icon">
             <i class="fas fa-pray"></i>
           </div>
           <h4>Prayer</h4>
         </div>
         
-        <div class="value-card">
+        <div class="value-card animate-on-scroll">
           <div class="value-icon">
             <i class="fas fa-user-tie"></i>
           </div>
           <h4>Servant hood</h4>
         </div>
         
-        <div class="value-card">
+        <div class="value-card animate-on-scroll">
           <div class="value-icon">
             <i class="fas fa-hand-holding-heart"></i>
           </div>
           <h4>Stewardship</h4>
         </div>
         
-        <div class="value-card">
+        <div class="value-card animate-on-scroll">
           <div class="value-icon">
             <i class="fas fa-book-open"></i>
           </div>
           <h4>Scholarship</h4>
         </div>
         
-        <div class="value-card">
+        <div class="value-card animate-on-scroll">
           <div class="value-icon">
             <i class="fas fa-medal"></i>
           </div>
           <h4>Excellence</h4>
         </div>
         
-        <div class="value-card">
+        <div class="value-card animate-on-scroll">
           <div class="value-icon">
             <i class="fas fa-shield-alt"></i>
           </div>
@@ -949,11 +1036,11 @@
     <div class="container">
       <div class="section-title">
         <h2>Contact Us</h2>
-        <p>Get in touch with us for ministry inquiries, prayer, or partnership</p>
+        <p>Get in touch for ministry inquiries or prayer</p>
       </div>
       
       <div class="contact-container">
-        <div class="contact-info">
+        <div class="contact-info animate-on-scroll">
           <h3>Contact Information</h3>
           
           <div class="contact-item">
@@ -988,17 +1075,6 @@
             </div>
           </div>
           
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-map-marker-alt"></i>
-            </div>
-            <div class="contact-details">
-              <h4>Location</h4>
-              <p>Active Word Apostolic Centre</p>
-              <p>Nairobi, Kenya</p>
-            </div>
-          </div>
-          
           <div class="social-icons">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-youtube"></i></a>
@@ -1007,8 +1083,8 @@
           </div>
         </div>
         
-        <div class="contact-form">
-          <h3>Send Us a Message</h3>
+        <div class="contact-form animate-on-scroll">
+          <h3>Send a Message</h3>
           <form id="contactForm">
             <div class="form-group">
               <label for="name">Your Name</label>
@@ -1018,11 +1094,6 @@
             <div class="form-group">
               <label for="email">Your Email</label>
               <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
-            </div>
-            
-            <div class="form-group">
-              <label for="subject">Subject</label>
-              <input type="text" id="subject" class="form-control" placeholder="Message subject">
             </div>
             
             <div class="form-group">
@@ -1044,9 +1115,9 @@
     <div class="container">
       <div class="footer-container">
         <div class="footer-about">
-          <div class="footer-logo">Active Word <span>Apostolic Centre</span></div>
+          <div class="footer-logo">Active Word <span>Apostolic</span></div>
           <p class="footer-motto">BUILDING LIVING TEMPLES!</p>
-          <p>Raising lives through the Word of God. A ministry dedicated to winning, building, and releasing believers for kingdom work.</p>
+          <p>A ministry dedicated to winning, building, and releasing believers for God's kingdom work.</p>
           <div class="social-icons">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-youtube"></i></a>
@@ -1059,10 +1130,10 @@
           <h3>Quick Links</h3>
           <ul>
             <li><a href="#home">Home</a></li>
-            <li><a href="#vision">Vision & Mission</a></li>
-            <li><a href="#purpose">Purpose Statement</a></li>
-            <li><a href="#values">Core Values</a></li>
-            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#mission">Mission</a></li>
+            <li><a href="#purpose">Purpose</a></li>
+            <li><a href="#values">Values</a></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
         
@@ -1070,7 +1141,6 @@
           <h3>Contact Info</h3>
           <p><i class="fas fa-envelope"></i> isaacolang@gmail.com</p>
           <p><i class="fas fa-phone"></i> +254 723 322 295</p>
-          <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
           <div class="compiled-by">
             <p>Compiled by Rev. I.C.N. Olang</p>
           </div>
@@ -1128,7 +1198,7 @@
       responseMessage.innerHTML = `
         <i class="fas fa-check-circle"></i> 
         <h3>Message Sent Successfully!</h3>
-        <p>Thank you for contacting Active Word Apostolic Centre. We will respond to your message shortly.</p>
+        <p>Thank you for contacting Active Word Apostolic Centre. We will respond to you shortly.</p>
         <p><small>You may also reach us directly at +254 723 322 295</small></p>
       `;
       responseMessage.classList.add('success');
@@ -1187,36 +1257,57 @@
       });
     });
     
-    // Add animation to mission cards on scroll
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
+    // Scroll animation for elements
+    const animateElements = document.querySelectorAll('.animate-on-scroll');
     
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
+          entry.target.classList.add('animated');
+          
+          // Stagger animation for child elements
+          if (entry.target.classList.contains('values-container')) {
+            const valueCards = entry.target.querySelectorAll('.value-card');
+            valueCards.forEach((card, index) => {
+              setTimeout(() => {
+                card.classList.add('animated');
+              }, index * 100);
+            });
+          }
         }
       });
-    }, observerOptions);
-    
-    // Observe mission cards
-    document.querySelectorAll('.mission-card').forEach(card => {
-      card.style.opacity = '0';
-      card.style.transform = 'translateY(30px)';
-      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      observer.observe(card);
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
     });
     
-    // Observe value cards
-    document.querySelectorAll('.value-card').forEach(card => {
-      card.style.opacity = '0';
-      card.style.transform = 'translateY(20px)';
-      card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-      observer.observe(card);
+    animateElements.forEach(element => {
+      observer.observe(element);
     });
+    
+    // Add float animation to mission icons
+    const missionIcons = document.querySelectorAll('.mission-icon');
+    missionIcons.forEach((icon, index) => {
+      icon.style.animationDelay = `${index * 0.5}s`;
+    });
+    
+    // Add hover animation to value cards
+    const valueCards = document.querySelectorAll('.value-card');
+    valueCards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        const icon = card.querySelector('.value-icon');
+        icon.style.animation = 'float 1s ease-in-out';
+      });
+    });
+    
+    // Vision text pulsing animation
+    const visionText = document.querySelector('.vision-box p');
+    setInterval(() => {
+      visionText.style.animation = 'none';
+      setTimeout(() => {
+        visionText.style.animation = 'pulse 2s infinite';
+      }, 10);
+    }, 4000);
   </script>
 </body>
 </html>
